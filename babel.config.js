@@ -16,8 +16,8 @@ module.exports = {
         {
           alias: {
             '@controllers': './src/controllers',
-            "@middlewares/*":'./src/middlewares/*',
-            "@infra/*":["./src/infra/*"]
+            "@middlewares":'./src/middlewares',
+            "@infra":"./src/infra"
             
           }
         }

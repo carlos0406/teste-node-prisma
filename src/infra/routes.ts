@@ -1,5 +1,6 @@
 import { AuthController } from '@controllers/AuthController'
 import { PostController } from '@controllers/PostController'
+import { UserController } from '@controllers/UserController'
 import { Auth } from '@middlewares/auth'
 import { Router } from 'express'
 const routes = Router()
@@ -7,8 +8,9 @@ const routes = Router()
 // instanciando controllers
 const authController = new AuthController()
 const postController = new PostController()
+const userController = new UserController()
 // rota de criacao de usuario
-// routes.post('/users', userController.create)
+routes.post('/users', userController.create)
 // rota de autenticaçao
 routes.post('/authentication', authController.authUser)
 // rota de criacao de posts

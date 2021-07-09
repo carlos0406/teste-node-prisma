@@ -1,10 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
-export default function Auth(
-  request: Request,
-  response: Response,
-  next: NextFunction
-) {
+export function Auth(request: Request, response: Response, next: NextFunction) {
   const authHeader = request.headers.authorization
   if (!authHeader) {
     return response.status(401).send({ error: 'token not sent' })

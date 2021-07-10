@@ -10,7 +10,7 @@ const authController = new AuthController()
 const postController = new PostController()
 const userController = new UserController()
 // rota de criacao de usuario
-routes.post('/users', userController.create)
+routes.post('/users', Auth, userController.create)
 // rota de autenticaçao
 routes.post('/authentication', authController.authUser)
 // rota de criacao de posts

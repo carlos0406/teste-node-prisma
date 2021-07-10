@@ -7,6 +7,9 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules -r tsconfig-paths/register src/infra/server.ts",
     "start": "node dist/infra/server",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy":"prisma migrate deploy",
+    "seed":"prisma db seed --preview-feature",
     "test": "jest",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored"
   },

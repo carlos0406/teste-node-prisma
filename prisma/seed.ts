@@ -1,6 +1,8 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
-export async function seeding() {
+
+export async function main() {
+  await prisma.$connect()
   const user = await prisma.user.upsert({
     where: { username: 'userseed' },
     update: {},
@@ -47,11 +49,11 @@ export async function seeding() {
   })
 }
 
-seeding()
+main()
   .catch(e => {
     console.log(e)
     process.exit(1)
   })
-  .finally(() => {
-    prisma.$disconnect()
+  .finally(async () => {
+    await prisma.$disconnect()
   })

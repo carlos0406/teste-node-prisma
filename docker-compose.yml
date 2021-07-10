@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: postgres
+      POSTGRES_DB: main
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+  api:
+    build: .
+    command: sh -c "yarn seed && yarn dev"
+    environment:
+      DATABASE_URL: postgresql://postgres:admin@db:5432/postgres
+      SECRET_KEY: 35f8117e0768d4ffb12b24bb0ca36c9fc1c5a53902eb
+
+    ports:
+      - '3333:3333'
+    volumes:
+      - .:/user/app
+    depends_on:
+      - db
